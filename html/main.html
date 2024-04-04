@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <title>Emu Chess Club</title>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo"><img src="../img/image.png" class="logophoto"></div>
+
+    <ul class="nav-links">
+
+      <input type="checkbox" id="checkbox_toggle" />
+      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+      <div class="menu">
+        <li><a href="../html/main.html">Home</a></li>
+        <li><a href="../html/login.html">Login</a></li>
+        <li><a href="../html/about.html">About</a></li>
+      </div>
+    </ul>
+  </nav>
+  <section class="timer">
+    <h2 class="remaining-time"></h2>
+  </section>
+  <script>
+    const targetTime = new Date('2024-05-19T13:00:00').getTime();
+
+    function updateTimer() {
+    const currentTime = new Date().getTime();
+    const remainingTime = targetTime - currentTime;
+
+    const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+
+    const timeElement = document.querySelector('.remaining-time');
+    timeElement.textContent = `${days.toString().padStart(2, '0')} days ${hours.toString().padStart(2, '0')} hours ${minutes.toString().padStart(2, '0')} minutes ${seconds.toString().padStart(2, '0')}\nseconds until first round`;
+    }
+
+
+    setInterval(updateTimer, 1000);
+
+
+    updateTimer();
+  </script>
+</body>
+
+</html>
